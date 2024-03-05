@@ -40,11 +40,19 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 
-  -- A good theme.
-  use("folke/tokyonight.nvim")
+	-- Statup screen.
+	use({
+		"goolord/alpha-nvim",
+		requires = { "nvim-tree/nvim-web-devicons" },
+	})
+
+	-- Some wisdom, jokes and other stuff ...
+	use("rubiin/fortune.nvim")
+
+	-- A good theme.
+	use("folke/tokyonight.nvim")
 
 	-- Better display of ex-commands.
 	use({
@@ -58,15 +66,23 @@ return packer.startup(function(use)
 	use("nvim-tree/nvim-tree.lua")
 
 	-- A protocol where everything is a buffer, even folders.
-	use({
-		"stevearc/oil.nvim",
-		config = function()
-			require("oil").setup()
-		end,
-	})
+	use("stevearc/oil.nvim")
 
 	-- Better icons for the interface.
 	use("nvim-tree/nvim-web-devicons")
+
+	-- Git decorations.
+	use("lewis6991/gitsigns.nvim")
+
+	-- Git system inside.
+	use({
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+			"nvim-telescope/telescope.nvim", -- optional
+		},
+	})
 
 	-- Powerful fuzzy-finder.
 	use({
@@ -78,6 +94,12 @@ return packer.startup(function(use)
 	-- Powerful syntax highlighting.
 	use("nvim-treesitter/nvim-treesitter")
 
+	-- Auto-closing.
+	use("m4xshen/autoclose.nvim")
+
+	-- Surroud utility.
+	use("kylechui/nvim-surround")
+
 	-- Cool status line.
 	use("nvim-lualine/lualine.nvim")
 
@@ -86,11 +108,15 @@ return packer.startup(function(use)
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	})
 
 	-- All of the DAP extra.
 	use("mfussenegger/nvim-dap")
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use("theHamsta/nvim-dap-virtual-text")
+	use({ "mfussenegger/nvim-dap-python", requires = { "mfussenegger/nvim-dap" } })
+	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
 
 	-- All the completion stuff.
 	use("hrsh7th/nvim-cmp")
@@ -105,6 +131,22 @@ return packer.startup(function(use)
 	use("onsails/lspkind.nvim") -- floating completion menu
 	use("RRethy/vim-illuminate") -- inline errors and stuff
 
+	-- Snippets
+	use({
+		"L3MON4D3/LuaSnip",
+		run = "make install_jsregexp",
+	})
+
+	-- Formatter
+	use({
+		"stevearc/conform.nvim",
+	})
+
+	-- Linter
+	use({
+		"mfussenegger/nvim-lint",
+	})
+
 	-- Cheatsheet for quick lookups.
 	use({
 		"sudormrfbin/cheatsheet.nvim",
@@ -114,6 +156,9 @@ return packer.startup(function(use)
 			{ "nvim-lua/plenary.nvim" },
 		},
 	})
+
+	-- Centralized keymaps management.
+	use("folke/which-key.nvim")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
