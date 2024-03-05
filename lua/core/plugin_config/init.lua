@@ -1,0 +1,7 @@
+require("core.plugin_config.productivity")
+require("core.plugin_config.interface")
+require("core.plugin_config.knowledge")
+require("core.plugin_config.editor")
+require("core.plugin_config.appearance")
+require("core.plugin_config.features")
+require("core.plugin_config.intellisense")
