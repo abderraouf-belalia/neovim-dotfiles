@@ -160,6 +160,13 @@ return packer.startup(function(use)
 	-- Centralized keymaps management.
 	use("folke/which-key.nvim")
 
+	-- Database browser.
+	use("tpope/vim-dadbod")
+	use({
+		"kristijanhusak/vim-dadbod-ui",
+		"kristijanhusak/vim-dadbod-completion",
+	})
+
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end

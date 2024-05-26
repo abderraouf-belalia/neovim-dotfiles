@@ -27,9 +27,9 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lua" },
 		{ name = "nvim_lsp" },
+		{ name = "vim-dadbod-completion" },
 		{ name = "path" },
 		{ name = "luasnip" },
-		{ name = "neorg" },
 		{ name = "buffer", keyword_lenght = 3 },
 	},
 	snippet = {
@@ -44,6 +44,7 @@ cmp.setup({
 				buffer = "[buf]",
 				nvim_lsp = "[LSP]",
 				nvim_lua = "[api]",
+				vim_dadbod_completion = "[DB]",
 				path = "[path]",
 				luasnip = "[snip]",
 			},
