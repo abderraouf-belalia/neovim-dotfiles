@@ -74,11 +74,6 @@ require("lspconfig")["cssls"].setup({
 	capabilities = capabilities,
 })
 
-require("lspconfig")["emmet-ls"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
 require("lspconfig")["pyright"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
