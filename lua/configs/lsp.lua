@@ -27,13 +27,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 vim.diagnostic.config({
-      virtual_text = false,
-      signs = true,
-      update_in_insert = false,
-      underline = true,
+	virtual_text = false,
+	signs = true,
+	update_in_insert = false,
+	underline = true,
 })
 
-require("lspconfig")["awk_ls"].setup({
+require("lspconfig")["solc"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
@@ -44,11 +44,6 @@ require("lspconfig")["graphql"].setup({
 })
 
 require("lspconfig")["cssls"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-require("lspconfig")["emmet_ls"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
@@ -73,6 +68,17 @@ require("lspconfig")["bashls"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
+
+require("lspconfig")["cssls"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+require("lspconfig")["emmet-ls"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
 require("lspconfig")["pyright"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
